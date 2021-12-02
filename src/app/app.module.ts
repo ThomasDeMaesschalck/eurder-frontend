@@ -7,12 +7,14 @@ import {AppRoutingModule} from './app-routing.module';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import { StockStatusPipe } from './pipes/stock-status.pipe';
+import { ItemSearchComponent } from './item/item-search/item-search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ItemsOverviewComponent,
-    StockStatusPipe
+    StockStatusPipe,
+    ItemSearchComponent
   ],
   imports: [
     BrowserModule,
