@@ -9,6 +9,7 @@ import {FormsModule} from "@angular/forms";
 import { StockStatusPipe } from './pipes/stock-status.pipe';
 import { ItemSearchComponent } from './item/item-search/item-search.component';
 import { ItemEditComponent } from './item/item-edit/item-edit.component';
+import { ItemDetailsComponent } from './item/item-details/item-details/item-details.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ItemEditComponent } from './item/item-edit/item-edit.component';
     ItemsOverviewComponent,
     StockStatusPipe,
     ItemSearchComponent,
-    ItemEditComponent
+    ItemEditComponent,
+    ItemDetailsComponent
   ],
   imports: [
     BrowserModule,

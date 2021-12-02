@@ -39,9 +39,9 @@ export class ItemEditComponent implements OnInit {
 
   save() {
     this.itemService.save(this.item!).subscribe(
-      item => {
-        this.item = item;
-          this.router.navigate(['']);
+      itemFromBackend => {
+        this.item = itemFromBackend;
+          this.router.navigate(['items', this.item.id]);
         }
     );
   }

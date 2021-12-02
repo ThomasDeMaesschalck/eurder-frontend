@@ -5,12 +5,12 @@
 
     <div *ngIf="item">
 
-<h2 *ngIf="id === 'new'">Make a new item:</h2>
-      <h2 *ngIf="id === 'new'">Make a new item:</h2>
+<h2 *ngIf="!id">Make a new item:</h2>
+      <h2 *ngIf="id">Update item {{item.id}}:</h2>
 
-  <div class="form-group">
+  <div class="form-group" *ngIf="id">
     <label>Id</label>
-    {{item.id || ' : New item '}}
+    {{item.id}}
   </div>
 
   <div>
