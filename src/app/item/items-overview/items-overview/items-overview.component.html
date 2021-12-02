@@ -1,6 +1,5 @@
 <main>
 
-
   <section>
 
     <h3 class="section-title">Items</h3>
@@ -9,8 +8,7 @@
 
     <button class="btn-create" routerLink="/items/new/edit">Make a new item</button>
 
-    <ul class="card-list" >
-
+    <ul class="card-list">
 
       <li class="card" *ngFor="let item of items">
         <div class="card-title"><a routerLink="/items/{{item.id}}">{{item.name}}</a></div>
@@ -18,18 +16,17 @@
         <div class="card-footer">
           <div>Price: &euro; {{item.price}}</div>
           <div class="stock">
-            <span>{{item.stockUrgency | stockStatus}}</span>
+            <span>{{item.stockUrgency | stockStatus | uppercase}}</span>
 
-            <img class="icon" src="../assets/img/red-icon.png" alt="warning low stock" *ngIf="item.stockUrgency == 'STOCK_LOW'">
-            <img class="icon" src="../assets/img/yellow-icon.png" alt="normal stock" *ngIf="item.stockUrgency == 'STOCK_MEDIUM'">
-            <img class="icon" src="../assets/img/green-icon.png" alt="high stock level" *ngIf="item.stockUrgency == 'STOCK_HIGH'">
+            <img class="icon" src="../assets/img/{{item.stockUrgency | stockStatus}}_stock-icon.png"
+                 alt="{{item.stockUrgency | stockStatus}} stock">
 
           </div>
         </div>
       </li>
 
-
-
     </ul>
+
+
   </section>
 </main>
