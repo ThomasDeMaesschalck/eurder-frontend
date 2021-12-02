@@ -1,0 +1,27 @@
+
+<main>
+
+
+  <section>
+    <h3 class="section-title">Items</h3>
+
+    <ul class="card-list" >
+
+
+      <li class="card" *ngFor="let item of items">
+        <div class="card-title">{{item.name}}</div>
+        <img class="card-image" src="../assets/img/item-image.png" alt="item image">
+        <div class="card-footer">
+          <div>Price: &euro; {{item.price}}</div>
+          <div class="stock">
+            <span>{{item.stockUrgency}}</span>
+            <img class="icon" src="../assets/img/warning-icon.png" alt="warning">
+          </div>
+        </div>
+      </li>
+
+
+
+    </ul>
+  </section>
+</main>
