@@ -7,11 +7,13 @@
 
     <app-item-search></app-item-search>
 
+    <button class="btn-create" routerLink="/items/new">Make a new item</button>
+
     <ul class="card-list" >
 
 
       <li class="card" *ngFor="let item of items">
-        <div class="card-title">{{item.name}}</div>
+        <div class="card-title"><a routerLink="/items/{{item.id}}">{{item.name}}</a></div>
         <img class="card-image" src="../assets/img/item-image.png" alt="item image">
         <div class="card-footer">
           <div>Price: &euro; {{item.price}}</div>

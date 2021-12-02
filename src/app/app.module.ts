@@ -8,13 +8,15 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import { StockStatusPipe } from './pipes/stock-status.pipe';
 import { ItemSearchComponent } from './item/item-search/item-search.component';
+import { ItemEditComponent } from './item/item-edit/item-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ItemsOverviewComponent,
     StockStatusPipe,
-    ItemSearchComponent
+    ItemSearchComponent,
+    ItemEditComponent
   ],
   imports: [
     BrowserModule,
