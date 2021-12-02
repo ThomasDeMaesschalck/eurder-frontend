@@ -1,3 +1,21 @@
 .red-text{
   color: red;
 }
+
+.invalid-text{
+  display: block;
+  padding-left: 5px;
+  font-size: 14px;
+  margin-bottom: .5rem;}
+
+textarea {
+  height: 150px;
+}
+.counter-right {
+  float: right;
+}
+
+button:disabled {
+   opacity: 0.7;
+   cursor: not-allowed;
+ }
