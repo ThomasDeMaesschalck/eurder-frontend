@@ -11,14 +11,20 @@
         {{item.id}}
       </div>
 
-      <div>
+      <div class="form-group">
         <label>Item name: {{item.name}}</label>
+      </div>
 
-        <label>Item description: {{item.description}}</label>
+      <div class="form-group">
+      <label>Item description: {{item.description}}</label>
+    </div>
 
-        <label>Price: {{item.price}}</label>
+      <div class="form-group">
+      <label>Price: {{item.price}}</label>
+    </div>
 
-        <label>Stock (amount): {{item.amountOfStock}}</label>
+      <div class="form-group">
+      <label>Stock (amount): {{item.amountOfStock}}</label>
       </div>
 
       <button (click)="goBack()">Go back</button>

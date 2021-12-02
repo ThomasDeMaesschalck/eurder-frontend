@@ -33,6 +33,7 @@
                     type="text"
                  [ngClass]="{'is-invalid': description.touched && description.invalid,  'is-valid': description.touched && description.valid}">
           </textarea>
+          <label><label [ngClass]="item.description.length > 254 ? 'red-text': ''">{{countCharactersLeft(item.description)}}</label>/255</label>
         </div>
 
         <div *ngIf="description.errors" class="red-text">
