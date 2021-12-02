@@ -6,11 +6,13 @@ import {ItemsOverviewComponent} from './item/items-overview/items-overview/items
 import {AppRoutingModule} from './app-routing.module';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
+import { StockStatusPipe } from './pipes/stock-status.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ItemsOverviewComponent
+    ItemsOverviewComponent,
+    StockStatusPipe
   ],
   imports: [
     BrowserModule,

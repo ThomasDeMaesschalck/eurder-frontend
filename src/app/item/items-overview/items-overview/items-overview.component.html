@@ -14,8 +14,12 @@
         <div class="card-footer">
           <div>Price: &euro; {{item.price}}</div>
           <div class="stock">
-            <span>{{item.stockUrgency}}</span>
-            <img class="icon" src="../assets/img/warning-icon.png" alt="warning">
+            <span>{{item.stockUrgency | stockStatus}}</span>
+
+            <img class="icon" src="../assets/img/red-icon.png" alt="warning low stock" *ngIf="item.stockUrgency == 'STOCK_LOW'">
+            <img class="icon" src="../assets/img/yellow-icon.png" alt="normal stock" *ngIf="item.stockUrgency == 'STOCK_MEDIUM'">
+            <img class="icon" src="../assets/img/green-icon.png" alt="high stock level" *ngIf="item.stockUrgency == 'STOCK_HIGH'">
+
           </div>
         </div>
       </li>
