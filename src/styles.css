@@ -160,6 +160,15 @@ form {
   background: limegreen;
 }
 
+.btn-view {
+  color: white;
+  background: lightskyblue;
+}
+.btn-edit {
+  color: white;
+  background: dodgerblue;
+}
+
 .card {
   list-style-type: none;
   margin: 2rem;
