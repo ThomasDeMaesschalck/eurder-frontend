@@ -48,7 +48,7 @@ export class ItemService {
 
   searchItems(term: string): Observable<Item[]> {
     if (!term.trim()) {
-      // if not search term, return empty hero array.
+      // if not search term, return empty array.
       return of([]);
     }
     return this.http.get<Item[]>(`${this._itemsUrl}/?name=${term}`)
