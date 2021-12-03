@@ -1,1 +1,55 @@
-<p>customer-edit works!</p>
+<main>
+  <section *ngIf="customer">
+    <h3 class="section-title">Customer {{customer.id}}</h3>
+    <form>
+      <div class="row">
+        <div class="col-1">
+          <label class="form-label" for="firstName">Firstname</label>
+          <input class="form-control" id="firstName" type="text" value="{{customer.firstname}}" readonly/>
+        </div>
+        <div class="col-1">
+          <label class="form-label" for="lastName">Lastname</label>
+          <input class="form-control" id="lastName" type="text" value="{{customer.lastname}}" readonly/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-1">
+          <label class="form-label" for="email">Email</label>
+          <input class="form-control" id="email" type="email" value="{{customer.email.complete}}"  readonly/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-1">
+          <label class="form-label" for="phoneNumber">Phone number (mobile)</label>
+          <input class="form-control" id="phoneNumber" type="tel" value="+{{customer.phoneNumber.countryCallingCode}} {{customer.phoneNumber.number}}" readonly/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <label class="form-label" for="street">Street</label>
+          <input class="form-control" id="street" type="text" value="{{customer.address.streetName}}"  readonly/>
+        </div>
+        <div class="col-1">
+          <label class="form-label" for="number">Number</label>
+          <input class="form-control" id="number" type="text" value="{{customer.address.houseNumber}}"  readonly/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-1">
+          <label class="form-label" for="postalCode">Postalcode</label>
+          <input class="form-control" id="postalCode" type="text" value="{{customer.address.postalCode}}"  readonly/>
+        </div>
+        <div class="col-1">
+          <label class="form-label" for="country">Country</label>
+          <select id="country" class="form-select" disabled>
+            <option>{{customer.address.country}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <button class="col-1 btn btn-edit" routerLink="/customers/{{customer.id}}/edit">Go back</button>
+        <button class="col-1 btn" (click)="cancel()">Cancel</button>
+      </div>
+    </form>
+  </section>
+</main>

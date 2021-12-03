@@ -36,6 +36,6 @@ export class CustomerDetailsComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['']);
+    this.router.navigate(['customers']);
   }
 }
