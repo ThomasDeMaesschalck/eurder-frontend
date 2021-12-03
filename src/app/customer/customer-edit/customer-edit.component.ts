@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Customer} from "../../models/Customer";
 import {CustomerService} from "../../services/customer.service";
+import {map, switchMap} from "rxjs/operators";
+import {Item} from "../../models/Item";
+import {of} from "rxjs";
 
 @Component({
   selector: 'app-customer-edit',
@@ -12,17 +15,44 @@ export class CustomerEditComponent implements OnInit {
 
   id: string | undefined;
   customer!: Customer | undefined;
+  countries: string[] = ['Belgium', 'France', 'Germany'];
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               private customerService: CustomerService) {
   }
 
+
   ngOnInit(): void {
+    this.route.params
+      .pipe(
+        map(p => p['id']),
+        switchMap(id => {
+          if (id === 'new') {
+            this.customer = <Customer>{
+            };
+            return of(this.customer);
+          }
+          return this.customerService.getById(id);
+        })
+      )
+      .subscribe(customer => {
+        this.customer = customer;
+      });
   }
 
+  save() {
+    this.customerService.save(this.customer!).subscribe(
+      customerFromBackEnd => {
+        this.customer = customerFromBackEnd;
+        this.router.navigate(['customers', this.customer.id]);
+      }
+    );
+  }
+
+
   cancel() {
-    this.router.navigate(['']);
+    this.router.navigate(['customers']);
   }
 
 }

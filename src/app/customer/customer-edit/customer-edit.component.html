@@ -1,53 +1,114 @@
 <main>
-  <section *ngIf="customer">
-    <h3 class="section-title">Customer {{customer.id}}</h3>
-    <form>
+  <section>
+    <h3 *ngIf="customer" class="section-title"><span *ngIf="!customer.id">Create</span> Customer {{customer.id}}</h3>
+    <form *ngIf="customer" #editForm="ngForm" (ngSubmit)="save()">
       <div class="row">
         <div class="col-1">
-          <label class="form-label" for="firstName">Firstname</label>
-          <input class="form-control" id="firstName" type="text" value="{{customer.firstname}}" readonly/>
+
+          <label class="form-label" for="firstName">Item name: </label>
+          <input id="firstName" [(ngModel)]="customer.firstname" placeholder="first name"
+                 name="firstName" class="form-control" required #firstName="ngModel"
+                 class="form-control"
+                 [ngClass]="{'is-invalid': firstName.touched && firstName.invalid,  'is-valid': firstName.touched && firstName.valid}">
         </div>
+
+
         <div class="col-1">
           <label class="form-label" for="lastName">Lastname</label>
-          <input class="form-control" id="lastName" type="text" value="{{customer.lastname}}" readonly/>
+          <input id="lastName" [(ngModel)]="customer.lastname" placeholder="last name"
+                 name="lastName" class="form-control" required #lastName="ngModel"
+                 class="form-control"
+                 [ngClass]="{'is-invalid': lastName.touched && lastName.invalid,  'is-valid': lastName.touched && lastName.valid}">
         </div>
       </div>
+
+      <div *ngIf="firstName.errors" class="red-text invalid-text">
+        First name is required.
+      </div>
+      <div *ngIf="lastName.errors" class="red-text invalid-text">
+        Last name is required.
+      </div>
+
       <div class="row">
         <div class="col-1">
           <label class="form-label" for="email">Email</label>
-          <input class="form-control" id="email" type="email" value="{{customer.email.complete}}"  readonly/>
+          <input id="email" [(ngModel)]="customer.email.complete" placeholder="your@mail.com"
+                 name="email" class="form-control" required #email="ngModel"
+                 class="form-control"
+                 [ngClass]="{'is-invalid': email.touched && email.invalid,  'is-valid': email.touched && email.valid}">
         </div>
       </div>
+
+      <div *ngIf="email.errors" class="red-text invalid-text">
+        Valid e-mail is required.
+      </div>
+
+
       <div class="row">
         <div class="col-1">
           <label class="form-label" for="phoneNumber">Phone number (mobile)</label>
-          <input class="form-control" id="phoneNumber" type="tel" value="+{{customer.phoneNumber.countryCallingCode}} {{customer.phoneNumber.number}}" readonly/>
+          <input id="phoneNumber" [(ngModel)]="customer.email.complete" placeholder="Phone number"
+                 name="phoneNumber" class="form-control" required #phoneNumber="ngModel"
+                 class="form-control"
+                 [ngClass]="{'is-invalid': phoneNumber.touched && phoneNumber.invalid,  'is-valid': phoneNumber.touched && phoneNumber.valid}">
         </div>
       </div>
+
+      <div *ngIf="phoneNumber.errors" class="red-text invalid-text">
+        Valid phone is required.
+      </div>
+
+
       <div class="row">
         <div class="col-4">
           <label class="form-label" for="street">Street</label>
-          <input class="form-control" id="street" type="text" value="{{customer.address.streetName}}"  readonly/>
+          <input id="street" [(ngModel)]="customer.address.streetName" placeholder="Street name"
+                 name="street" class="form-control" required #street="ngModel"
+                 class="form-control"
+                 [ngClass]="{'is-invalid': street.touched && street.invalid,  'is-valid': street.touched && street.valid}">
         </div>
         <div class="col-1">
           <label class="form-label" for="number">Number</label>
-          <input class="form-control" id="number" type="text" value="{{customer.address.houseNumber}}"  readonly/>
+          <input id="number" [(ngModel)]="customer.address.houseNumber" placeholder="House number"
+                 name="number" class="form-control" required #number="ngModel"
+                 class="form-control"
+                 [ngClass]="{'is-invalid': number.touched && number.invalid,  'is-valid': number.touched && number.valid}">
         </div>
       </div>
+      <div *ngIf="street.errors" class="red-text invalid-text">
+        Valid streetname is required.
+      </div>
+      <div *ngIf="number.errors" class="red-text invalid-text">
+        Valid house number is required.
+      </div>
+
+
       <div class="row">
         <div class="col-1">
           <label class="form-label" for="postalCode">Postalcode</label>
-          <input class="form-control" id="postalCode" type="text" value="{{customer.address.postalCode}}"  readonly/>
+          <input id="postalCode" [(ngModel)]="customer.address.postalCode" placeholder="Postal code"
+                 name="postalCode" class="form-control" required #postalCode="ngModel"
+                 class="form-control"
+                 [ngClass]="{'is-invalid': postalCode.touched && postalCode.invalid,  'is-valid': postalCode.touched && postalCode.valid}">
         </div>
         <div class="col-1">
           <label class="form-label" for="country">Country</label>
-          <select id="country" class="form-select" disabled>
-            <option>{{customer.address.country}}</option>
+          <select id="country" class="form-select" name="country "[(ngModel)]="customer.address.country">
+            <option *ngFor="let c of countries" [ngValue]="c">{{c}}</option>
+
           </select>
+
         </div>
       </div>
+
+      <div *ngIf="postalCode.errors" class="red-text invalid-text">
+        Valid postal code is required.
+      </div>
+
       <div class="row">
-        <button class="col-1 btn btn-edit" routerLink="/customers/{{customer.id}}/edit">Go back</button>
+        <button type="submit" title="All fields required"
+                class="col-4 btn btn-create"
+                [disabled]="!editForm.form.valid">Save</button>
         <button class="col-1 btn" (click)="cancel()">Cancel</button>
       </div>
     </form>

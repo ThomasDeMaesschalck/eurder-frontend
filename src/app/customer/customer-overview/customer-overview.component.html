@@ -2,10 +2,10 @@
 
   <section>
 
-
     <h3 class="section-title">Customers</h3>
 
-    <div class="row">    <app-customer-search></app-customer-search>
+    <div class="row">
+      <app-customer-search></app-customer-search>
     </div>
 
     <table id="customers">
@@ -13,22 +13,20 @@
         <th>Id</th>
         <th>Firstname</th>
         <th>Lastname</th>
-        <th>    <button class="btn-create btn" routerLink="/customers/new/edit">New customer</button>
+        <th>
+          <button class="btn-create btn" routerLink="/customers/new/edit">New customer</button>
         </th>
       </tr>
       <tr *ngFor="let customer of customers">
         <td>{{customer.id}}</td>
         <td>{{customer.firstname}}</td>
         <td>{{customer.lastname}}</td>
-        <td>    <button class="btn-view btn" routerLink="/customers/{{customer.id}}">View</button>
-          <button class="btn-edit btn" routerLink="/items/{{customer.id}}/edit">Edit</button>
-
+        <td>
+          <button class="btn-view btn" routerLink="/customers/{{customer.id}}">View</button>
+          <button class="btn-edit btn" routerLink="/customers/{{customer.id}}/edit">Edit</button>
         </td>
-
       </tr>
-
     </table>
-
 
   </section>
 </main>
