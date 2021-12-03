@@ -120,11 +120,13 @@
                  class="form-control"
                  [ngClass]="{'is-invalid': postalCode.touched && postalCode.invalid,  'is-valid': postalCode.touched && postalCode.valid}">
         </div>
+
         <div class="col-1">
           <label class="form-label" for="country">Country</label>
-          <select id="country" class="form-select" name="country "[(ngModel)]="customer.address.country">
+          <select id="country" class="form-select" required
+                  #country="ngModel"
+                  name="country"[(ngModel)]="customer.address.country">
             <option *ngFor="let c of countries" [ngValue]="c">{{c}}</option>
-
           </select>
 
         </div>
@@ -132,6 +134,10 @@
 
       <div *ngIf="postalCode.errors" class="red-text invalid-text">
         Valid postal code is required.
+      </div>
+
+      <div *ngIf="country.errors" class="red-text invalid-text">
+        Country is required.
       </div>
 
       <div class="row">

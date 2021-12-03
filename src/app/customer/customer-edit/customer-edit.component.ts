@@ -30,6 +30,11 @@ export class CustomerEditComponent implements OnInit {
         switchMap(id => {
           if (id === 'new') {
             this.customer = <Customer>{
+              firstname: '',
+              lastname: '',
+              email: {},
+              address: {},
+              phoneNumber: {}
             };
             return of(this.customer);
           }
