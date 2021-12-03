@@ -1,4 +1,4 @@
-<main>
+<main xmlns="http://www.w3.org/1999/html">
   <section>
     <h3 *ngIf="customer" class="section-title"><span *ngIf="!customer.id">Create</span> Customer {{customer.id}}</h3>
     <form *ngIf="customer" #editForm="ngForm" (ngSubmit)="save()">
@@ -30,28 +30,57 @@
       </div>
 
       <div class="row">
+
         <div class="col-1">
-          <label class="form-label" for="email">Email</label>
-          <input id="email" [(ngModel)]="customer.email.complete" placeholder="your@mail.com"
-                 name="email" class="form-control" required #email="ngModel"
+          <label class="form-label" for="emaillocal">Email</label>
+
+          <input id="emaillocal" [(ngModel)]="customer.email.localPart" placeholder="username"
+                 name="emaillocal" class="form-control" required #email="ngModel"
                  class="form-control"
                  [ngClass]="{'is-invalid': email.touched && email.invalid,  'is-valid': email.touched && email.valid}">
-        </div>
-      </div>
 
-      <div *ngIf="email.errors" class="red-text invalid-text">
+        </div>
+
+        <div class="col-1">
+          <label class="form-label" for="emailat">&nbsp;</label>
+          <input id="emailat"  class="form-control" placeholder="@" disabled>
+        </div>
+
+
+        <div class="col-1">
+          <label class="form-label" for="emaildomain">&nbsp;</label>
+
+        <input id="emaildomain" [(ngModel)]="customer.email.domain" placeholder="username"
+                 name="email" class="form-control" required #emaildomain="ngModel"
+                 class="form-control"
+                 [ngClass]="{'is-invalid': emaildomain.touched && emaildomain.invalid,  'is-valid': emaildomain.touched && emaildomain.valid}">
+        </div>
+
+        </div>
+
+      <div *ngIf="email.errors || emaildomain.errors" class="red-text invalid-text">
         Valid e-mail is required.
       </div>
 
 
       <div class="row">
         <div class="col-1">
+          <label class="form-label" for="phoneNumberPrefix">Prefix</label>
+          <input id="phoneNumberPrefix" [(ngModel)]="customer.phoneNumber.countryCallingCode" placeholder="Prefix"
+                 name="phoneNumberPrefix" class="form-control" required #phoneNumberPrefix="ngModel"
+                 class="form-control"
+                 [ngClass]="{'is-invalid': phoneNumberPrefix.touched && phoneNumberPrefix.invalid,  'is-valid': phoneNumberPrefix.touched && phoneNumberPrefix.valid}">
+        </div>
+        <div class="col-4">
           <label class="form-label" for="phoneNumber">Phone number (mobile)</label>
-          <input id="phoneNumber" [(ngModel)]="customer.email.complete" placeholder="Phone number"
+          <input id="phoneNumber" [(ngModel)]="customer.phoneNumber.number" placeholder="Phone number"
                  name="phoneNumber" class="form-control" required #phoneNumber="ngModel"
                  class="form-control"
                  [ngClass]="{'is-invalid': phoneNumber.touched && phoneNumber.invalid,  'is-valid': phoneNumber.touched && phoneNumber.valid}">
         </div>
+      </div>
+      <div *ngIf="phoneNumberPrefix.errors" class="red-text invalid-text">
+        Valid phone prefix is required.
       </div>
 
       <div *ngIf="phoneNumber.errors" class="red-text invalid-text">

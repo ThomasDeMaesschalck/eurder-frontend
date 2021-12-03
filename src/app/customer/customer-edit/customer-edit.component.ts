@@ -42,6 +42,7 @@ export class CustomerEditComponent implements OnInit {
   }
 
   save() {
+    this.customer!.email.complete = this.customer!.email.localPart + '@' + this.customer!.email.domain;
     this.customerService.save(this.customer!).subscribe(
       customerFromBackEnd => {
         this.customer = customerFromBackEnd;
