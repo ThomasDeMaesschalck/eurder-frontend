@@ -24,10 +24,6 @@ export class ItemDetailsComponent implements OnInit {
       .pipe(
         map(p => p['id']),
         switchMap(id => {
-          if (id === 'new') {
-            // @ts-ignore
-            this.item = {};
-            return of(this.item); }
           return this.itemService.getById(id);
         })
       )
