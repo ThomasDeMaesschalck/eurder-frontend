@@ -10,6 +10,9 @@ import { StockStatusPipe } from './pipes/stock-status.pipe';
 import { ItemSearchComponent } from './item/item-search/item-search.component';
 import { ItemEditComponent } from './item/item-edit/item-edit.component';
 import { ItemDetailsComponent } from './item/item-details/item-details/item-details.component';
+import { CustomerOverviewComponent } from './customer/customer-overview/customer-overview.component';
+import { CustomerDetailsComponent } from './customer/customer-details/customer-details.component';
+import { CustomerEditComponent } from './customer/customer-edit/customer-edit.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { ItemDetailsComponent } from './item/item-details/item-details/item-deta
     StockStatusPipe,
     ItemSearchComponent,
     ItemEditComponent,
-    ItemDetailsComponent
+    ItemDetailsComponent,
+    CustomerOverviewComponent,
+    CustomerDetailsComponent,
+    CustomerEditComponent
   ],
   imports: [
     BrowserModule,
