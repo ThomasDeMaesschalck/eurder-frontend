@@ -41,7 +41,7 @@ a:visited {
 
 nav {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 nav > a {
@@ -135,6 +135,7 @@ form {
 
 .btn:hover {
   text-decoration: none;
+  opacity: 0.7;
 }
 
 .btn {
@@ -164,6 +165,7 @@ form {
   color: white;
   background: lightskyblue;
 }
+
 .btn-edit {
   color: white;
   background: dodgerblue;
@@ -207,4 +209,9 @@ form {
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.right {
+  float: right;
+}
+
 /* You can add global styles to this file, and also import other style files */

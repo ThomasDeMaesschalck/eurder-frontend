@@ -13,6 +13,7 @@ import { ItemDetailsComponent } from './item/item-details/item-details/item-deta
 import { CustomerOverviewComponent } from './customer/customer-overview/customer-overview.component';
 import { CustomerDetailsComponent } from './customer/customer-details/customer-details.component';
 import { CustomerEditComponent } from './customer/customer-edit/customer-edit.component';
+import { CustomerSearchComponent } from './customer/customer-search/customer-search.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CustomerEditComponent } from './customer/customer-edit/customer-edit.co
     ItemDetailsComponent,
     CustomerOverviewComponent,
     CustomerDetailsComponent,
-    CustomerEditComponent
+    CustomerEditComponent,
+    CustomerSearchComponent
   ],
   imports: [
     BrowserModule,
